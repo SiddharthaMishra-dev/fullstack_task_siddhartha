@@ -41,8 +41,8 @@ export default function App() {
       setConnected(true);
       fetchNotes();
     });
-    socket.on("taskList", (updatednotes) => {
-      console.log("Received updated task list:", updatednotes);
+    socket.on("noteList", (updatednotes) => {
+      console.log("Received updated note list:", updatednotes);
       setnotes(updatednotes);
     });
 
@@ -52,7 +52,7 @@ export default function App() {
     });
     return () => {
       socket.off("connect");
-      socket.off("taskList");
+      socket.off("noteList");
       socket.off("disconnect");
     };
   }, []);
